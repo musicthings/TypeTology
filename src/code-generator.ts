@@ -33,10 +33,8 @@ export class ${this.className} extends TypetologyContract {
   constructor(client: any) {
     super(client);
   }
-  
 ${functionCodes.join('')}
 }
-
 `
   }
 
@@ -47,7 +45,7 @@ ${functionCodes.join('')}
     );
 
     return `
-  public ${abiFunction.name}(
+  public ${abiFunction.name}Tx(
     ${paramsWithType.join(',\n    ')}
   ): DeferredTransactionWrapper {
     return new DeferredTransactionWrapper(
