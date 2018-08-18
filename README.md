@@ -172,4 +172,4 @@ owner : AazEvfQPcQ2GEFFPLF1ZLwQ7K5jDn81hve
 ```
 
 ## License
-MIT
+GNU Lesser General Public License v3.0
