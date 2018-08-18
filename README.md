@@ -51,7 +51,7 @@ Followings are example for `DomainContract.json` ABI file generated from the
 ```typescript
 /* tslint:disable */
 
-import { AbiInfo } from 'ontology-ts-sdk';
+import { AbiInfo, RestClient, RpcClient, WebsocketClient } from 'ontology-ts-sdk';
 import { TypetologyContract, DeferredTransactionWrapper } from './typetology.runtime';
 
 const abi = {
@@ -61,7 +61,7 @@ const abi = {
 export class DomainContract extends TypetologyContract {
   public readonly abiInfo: AbiInfo = AbiInfo.parseJson(JSON.stringify(abi));
   
-  constructor(client: any) {
+  constructor(client: RestClient | RpcClient | WebsocketClient) {
     super(client);
   }
 
