@@ -1,14 +1,6 @@
 /* tslint:disable */
 
-import {
-  AbiInfo,
-  AbiFunction,
-  Crypto,
-  Parameter,
-  ParameterType,
-  utils,
-  TransactionBuilder
-} from "ontology-ts-sdk";
+import {AbiFunction, AbiInfo, Crypto, Parameter, ParameterType, TransactionBuilder, utils} from "ontology-ts-sdk";
 
 export const MIN_GAS_LIMIT = '20000';
 export const MIN_GAS_PRICE = '500';
@@ -39,9 +31,13 @@ export class DeferredTransactionWrapper {
     this.abiFunction.parameters.forEach((funcParam, index) => {
       const paramName = funcParam.getName();
       const paramType = funcParam.getType();
-      const paramValue = (paramType === ParameterType.String) ?
-        utils.str2hexstr(this.methodArgs[index]) :
-        this.methodArgs[index];
+      let paramValue = this.methodArgs[index];
+
+      // if the parameter type is byte array and the value is buffer,
+      // it needs to convert into hex string
+      if (paramType === ParameterType.ByteArray && Buffer.isBuffer(paramValue)) {
+        paramValue = (paramValue as Buffer).toString('hex');
+      }
 
       funcParams.push(new Parameter(paramName, paramType, paramValue));
     });

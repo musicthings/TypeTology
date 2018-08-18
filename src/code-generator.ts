@@ -70,6 +70,8 @@ ${functionCodes.join('')}
       case ParameterType.IntArray:
       case ParameterType.LongArray:
         return 'number[]';
+      case ParameterType.ByteArray:
+        return 'string | Buffer';
       case ParameterType.String:
         return 'string';
       default:
