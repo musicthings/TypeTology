@@ -47,14 +47,40 @@ async function main() {
 
   Promise.all([
     // copy an utility file for the code
-    fs.createReadStream(path.join(__dirname, '..', 'src', 'typetology.runtime.ts'))
-      .pipe(fs.createWriteStream(path.join(options.out, 'typetology.runtime.ts'))),
-    ...matchFiles.map((abiFile => generateCode(abiFile, options.out)))
+    generateLibrary(options.out, !!options.force),
+    ...matchFiles.map((abiFile => generateCode(abiFile, !!options.force, options.out)))
   ])
     .then(() => console.log('success to generate code!'));
 }
 
-function generateCode(abiPath: string, outputDir?: string): Promise<any> {
+/**
+ * Copy a typetology library to the output directory.
+ * @param outputDir output directory.
+ * @param force whether overwrite if existing.
+ */
+function generateLibrary(outputDir: string, force: boolean): Promise<any> {
+  return new Promise<any>((resolve) => {
+    const outPath = path.join(outputDir, 'typetology.runtime.ts');
+
+    // if file exists and force option is not set, ignore generating.
+    if (!force && fs.existsSync(outPath)) {
+      return resolve();
+    }
+
+    // copy runtime library
+    fs.createReadStream(path.join(__dirname, '..', 'src', 'typetology.runtime.ts'))
+      .pipe(fs.createWriteStream(path.join(outputDir, 'typetology.runtime.ts')))
+      .on('close', resolve);
+  });
+}
+
+/**
+ * Generates a contract class defined file.
+ * @param abiPath abi file path.
+ * @param force whether overwrite if existing.
+ * @param outputDir output directory.
+ */
+function generateCode(abiPath: string, force: boolean, outputDir?: string): Promise<any> {
   const parsedPath = path.parse(abiPath);
 
   if (!outputDir) {
@@ -62,6 +88,11 @@ function generateCode(abiPath: string, outputDir?: string): Promise<any> {
   }
 
   const outputPath = path.join(outputDir, parsedPath.name + '.ts');
+
+  if (!force && fs.existsSync(outputPath)) {
+    console.error(`Warning : ${outputPath} exists! Give "--force" options for overwriting.`);
+    return Promise.resolve();
+  }
 
   return promisify(fs.readFile, abiPath).then((abi) => {
     const codeGen = new CodeGenerator(parsedPath.name, abi.toString());
