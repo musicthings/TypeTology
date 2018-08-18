@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "types": ["node", "mocha"],
+    "lib": ["es2015", "es2016", "es2017"],
+    "target": "es2017",
+    "outDir": "./dist",
+    "module": "commonjs",
+    "declaration": true,
+    "plugins": [
+      {
+        "name": "tslint-language-service",
+        "alwaysShowRuleFailuresAsWarnings": false,
+        "ignoreDefinitionFiles": true,
+        "configFile": "./tslint.json",
+        "disableNoUnusedVariableRule": false,
+        "supressWhileTypeErrorsPresent": false
+      }
+    ]
+  },
+  "include": [
+    "./src/index.ts"
+  ]
+}

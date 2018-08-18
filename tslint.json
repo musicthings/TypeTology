@@ -1,0 +1,13 @@
+{
+  "extends": "typestrict",
+  "rules": {
+    "noUnusedLocals": true,
+    "no-console": true,
+    "no-debugger": true
+  },
+  "cliOptions": {
+    "exclude": [
+      "test/abi/"
+    ]
+  }
+}

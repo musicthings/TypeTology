@@ -1,0 +1,12 @@
+{
+  "hash":"0xfd2dc90d8bdc551798c268291c81333ae7905eed",
+  "entrypoint":"Main",
+  "functions":[
+    {"name":"Main","parameters":[{"name":"operation","type":"String"},{"name":"args","type":"Array"}],"returntype":"Any"},
+    {"name":"Query","parameters":[{"name":"domain","type":"String"}],"returntype":"ByteArray"},
+    {"name":"Register","parameters":[{"name":"domain","type":"String"},{"name":"owner","type":"ByteArray"}],"returntype":"Boolean"},
+    {"name":"Transfer","parameters":[{"name":"domain","type":"String"},{"name":"to","type":"ByteArray"}],"returntype":"Boolean"},
+    {"name":"Delete","parameters":[{"name":"domain","type":"String"}],"returntype":"Boolean"}
+  ],
+  "events":[]
+}

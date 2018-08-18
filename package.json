@@ -1,0 +1,38 @@
+{
+  "name": "typetology",
+  "version": "0.0.1",
+  "description": "Typescript bindings for Ontology smart contracts",
+  "main": "./dist/index.js",
+  "bin": "./dist/typetology-cli.js",
+  "scripts": {
+    "clean": "npm run clean:dist && npm run clean:test && npm run clean:gen",
+    "clean:test": "rm -rf ./test-out",
+    "clean:dist": "rm -rf ./dist",
+    "clean:gen": "rm -rf ./dest",
+    "compile": "npm run clean:dist && tsc -p ./tsconfig.json",
+    "publish": "npm run compile && npm publish",
+    "test": "npm run test:no-clean && npm run clean:test",
+    "test:no-clean": "rm -rf test-out && mocha -r ts-node/register ./test/**/*.ts",
+    "gen": "ts-node ./src/typetology-cli.ts -o ./dest ./test/abi/*.json --force"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/command-line-args": "^5.0.0",
+    "@types/glob": "^5.0.35",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.7.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "ontology-ts-sdk": "^0.9.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "glob": "^7.1.2"
+  },
+  "peerDependencies": {
+    "ontology-ts-sdk": "0.9.x"
+  }
+}
