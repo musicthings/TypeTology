@@ -48,7 +48,7 @@ describe('typetology CLI for domain contract', () => {
     const contract = new DomainContract(client);
 
     // wait for sending transaction to network
-    const tx = await contract.Query('hello').send({
+    const tx = await contract.QueryTx('hello').send({
       payer: walletAddress,
       privateKey: privateKey
     });

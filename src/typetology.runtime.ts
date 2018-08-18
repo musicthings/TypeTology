@@ -1,6 +1,13 @@
 /* tslint:disable */
 
-import {AbiFunction, AbiInfo, Crypto, Parameter, ParameterType, TransactionBuilder, utils} from "ontology-ts-sdk";
+import {
+  AbiFunction, AbiInfo,
+  Crypto,
+  Parameter, ParameterType,
+  RestClient, RpcClient, WebsocketClient,
+  TransactionBuilder,
+  utils
+} from "ontology-ts-sdk";
 
 export const MIN_GAS_LIMIT = '20000';
 export const MIN_GAS_PRICE = '500';
@@ -63,7 +70,7 @@ export class TypetologyContract {
   // @ts-ignore
   public readonly abiInfo: AbiInfo;
 
-  public constructor(client: any) {
+  public constructor(client: RestClient | RpcClient | WebsocketClient) {
     this.client = client;
   }
 
