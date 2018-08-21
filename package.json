@@ -2,6 +2,12 @@
   "name": "typetology",
   "version": "0.0.1",
   "description": "Typescript bindings for Ontology smart contracts",
+  "keywords": [
+    "typetology",
+    "ontology",
+    "typescript",
+    "typechain"
+  ],
   "main": "./dist/index.js",
   "bin": "./dist/typetology-cli.js",
   "scripts": {
@@ -15,8 +21,8 @@
     "test:no-clean": "rm -rf test-out && mocha -r ts-node/register ./test/**/*.ts",
     "gen": "ts-node ./src/typetology-cli.ts -o ./dest ./test/abi/*.json --force"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Muzika Foundation",
+  "license": "LGPL-3.0",
   "devDependencies": {
     "@types/command-line-args": "^5.0.0",
     "@types/glob": "^5.0.35",
