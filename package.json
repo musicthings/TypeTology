@@ -1,6 +1,6 @@
 {
   "name": "typetology",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Typescript bindings for Ontology smart contracts",
   "keywords": [
     "typetology",
@@ -41,6 +41,7 @@
     "ontology-ts-sdk": "0.9.x"
   },
   "files": [
-    "dist"
+    "dist",
+    "runtime"
   ]
 }

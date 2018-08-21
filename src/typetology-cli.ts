@@ -68,7 +68,7 @@ function generateLibrary(outputDir: string, force: boolean): Promise<any> {
     }
 
     // copy runtime library
-    fs.createReadStream(path.join(__dirname, '..', 'src', 'typetology.runtime.ts'))
+    fs.createReadStream(path.join(__dirname, '..', 'runtime', 'typetology.runtime.ts'))
       .pipe(fs.createWriteStream(path.join(outputDir, 'typetology.runtime.ts')))
       .on('close', resolve);
   });
