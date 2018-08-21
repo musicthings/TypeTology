@@ -1,4 +1,4 @@
-
+#!/usr/bin/env node
 import * as commandLineArgs from 'command-line-args';
 import * as glob from 'glob';
 import * as fs from 'fs';

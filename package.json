@@ -1,6 +1,6 @@
 {
   "name": "typetology",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Typescript bindings for Ontology smart contracts",
   "keywords": [
     "typetology",
@@ -16,7 +16,6 @@
     "clean:dist": "rm -rf ./dist",
     "clean:gen": "rm -rf ./dest",
     "compile": "npm run clean:dist && tsc -p ./tsconfig.json",
-    "publish": "npm run compile && npm publish",
     "test": "npm run test:no-clean && npm run clean:test",
     "test:no-clean": "rm -rf test-out && mocha -r ts-node/register ./test/**/*.ts",
     "gen": "ts-node ./src/typetology-cli.ts -o ./dest ./test/abi/*.json --force"
@@ -40,5 +39,8 @@
   },
   "peerDependencies": {
     "ontology-ts-sdk": "0.9.x"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
